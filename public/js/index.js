@@ -37,7 +37,7 @@ jQuery(function ($) {
         $('#api_result').removeClass("alert-success").removeClass("alert-error");
         $('#signed_result').hide();
         if (data.result === "success") {
-          var signresPretty = data.signres.match(/.{64}/g).join('<br>');
+          var signresPretty = data.signres.match(/.{1,64}/g).join('<br>');
           $('#api_result').html("Blinded signature:<br>"+signresPretty).addClass('alert-success');
           $('#signed_result').show();
 
