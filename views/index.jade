@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .container-fluid
+    h1= title
+    p This is the web interface for this Auth.js peer.
+    form(data-modulus=modulus, data-exponent=exponent)
+      fieldset
+        legend Authentication Properties
+        label Username
+        input(type="text", name="username", placeholder="Enter a username", required, value="justmoon")
+        span.help-block This is your username at this server.
+        label Secret
+        input.input-xxlarge(type="text", name="secret", placeholder="Enter a secret", required, value="awesome_password")
+        span.help-block Local secret (such as a password).
+      .form-actions
+        button#submit.btn.btn-primary(type="submit") Submit
+      #reply
+        h3 Generated parameters
+        fieldset
+          label Signature Request
+          input.input-xxlarge(type="text", name="signreq", readonly)
+          span.help-block This is the blinded secret which is sent to the server.
+        h3 Server Reply
+        #api_result.alert
+        fieldset#signed_result
+          label Signature
+          input.input-xxlarge(type="text", name="signed", readonly)
+          span.help-block The unblinded, signed value.
+
+block scripts_body
+  script(src="/js/index.js")
