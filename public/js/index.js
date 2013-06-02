@@ -44,7 +44,9 @@ jQuery(function ($) {
         publicHash = fdh(publicInfo, publicSize),
         publicHex  = sjcl.codec.hex.fromBits(publicHash),
         iPublic    = new BigInteger(""+publicHex, 16).setBit(0),
-        secretHash = sjcl.hash.sha256.hash(secret),
+        secretInfo = publicInfo+":"+secret.length+":"+secret+":",
+        secretSize = (7+iModulus.bitLength()) >>> 3,
+        secretHash = fdh(secretInfo, secretSize),
         secretHex  = sjcl.codec.hex.fromBits(secretHash),
         iSecret    = new BigInteger(""+secretHex, 16).mod(iModulus);
 
