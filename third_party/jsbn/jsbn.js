@@ -1262,7 +1262,10 @@ BigInteger.prototype.jacobi = function (n) {
   }
 };
 
-exports.nbi	    = nbi;
-exports.BigInteger  = BigInteger;
+if ("object" === typeof exports) {
+  exports.BigInteger  = BigInteger;
+} else if ("object" === typeof window) {
+  window.BigInteger = BigInteger;
+}
 
 // vim:sw=2:sts=2:ts=8:et
